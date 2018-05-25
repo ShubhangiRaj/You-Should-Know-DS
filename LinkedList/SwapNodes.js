@@ -84,60 +84,36 @@ function findNode(listHead, data){
 }
 
 function swapNodes(listHead, nodeDataA, nodeDataB){
-    if(listHead == null || listHead.next == null){
-        return
-    }
     let prevNodeA = findPrevNode(listHead, nodeDataA);
     let prevNodeB = findPrevNode(listHead, nodeDataB);
     let nodeA = findNode(listHead, nodeDataA);
     let nodeB = findNode(listHead, nodeDataB);
 
-    // if both nodes donot exist in the list
-    if(nodeA == null && nodeB == null){
-        return 0;
+    // if either nodes not present
+    if(nodeA == null || nodeB == null){
+        return;
     }
-
-   // if nodeA is the head or nodeB is head
-   if(prevNodeA == null || prevNodeB == null){
-        if(prevNodeA == null){
+    // if prevNode == null, it means node is head node.
+    if(!prevNodeA || !prevNodeB){
+        if(!prevNodeA){
             let temp = nodeA.next;
             nodeA.next = nodeB.next;
             nodeB.next = temp;
             prevNodeB.next = nodeA;
             listHead = nodeB;
-        }
-        if(prevNodeB == null){
+        } else {
             let temp = nodeB.next;
             nodeB.next = nodeA.next;
             nodeA.next = temp;
             prevNodeA.next = nodeB;
             listHead = nodeA;
         }
-   }
+    }
 
-   // if nodeA is the last node or node is last node
-   if(nodeA.next == null || nodeB.next == null){
-       if(nodeA.next == null){
-           nodeA.next = nodeB.next;
-           prevNodeB.next = nodeA;
-           prevNodeA.next = nodeB;
-           nodeB.next = null;
-       }
-       if(nodeB.next == null){
-            nodeB.next = nodeA.next;
-            prevNodeA.next = nodeB;
-            prevNodeB.next = nodeA;
-            nodeA.next = null;
-        }
-   }
-//    let tempA = nodeA.next;
-//    let tempB = nodeB.next;
+    // if nodes are not head;
+    
 
-//    prevNodeA.next = nodeB;
-//    prevNodeB.next = nodeA;
-//    nodeB.next = prevNodeA;
+    return listHead;
 }
 
-swapNodes(list.head, 10 , 20);
-
-// TODO
+swapNodes(list.head, 20 , 10);

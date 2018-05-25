@@ -56,49 +56,60 @@ list.insertLast("D");
 list.insertLast("A");
 list.insertLast("M");
 list.size();
-// list.middleNode(list.head);
-// list.reverse(list.head);
-// list.print();
 
-function reverse(list){
+function findMiddle(listHead){
     if(!listHead){
-        return
+        return 0;
     }
-    let prev = null;
-    let curr = listHead;
-    let next;
+    let slowPtr = listHead;
+    let fastPtr = listHead;
+    while(fastPtr !== null && fastPtr.next !== null){
+        slowPtr = slowPtr.next;
+        fastPtr = fastPtr.next.next;
+    }
+    console.log(slowPtr);
+    return slowPtr;
+}
+// findMiddle(list.head);
 
+function findPrevToNode(listHead){
+    if(!listHead){
+        return 0;
+    }
+    let node = findMiddle(listHead);
+    let curr = listHead;
+    let prev;
+    while(curr !== null){
+        if(curr.data == node.data){
+            console.log(prev);
+            return prev;
+        }
+        prev = curr;
+        curr = curr.next;
+    }
+}
+// findPrevToNode(list.head);
+
+LinkedList.prototype.reverse = function(){
+    let prev = null;
+    let curr = this.head;
+    let next;
     while(curr !== null){
         next = curr.next;
         curr.next = prev;
         prev = curr;
         curr = next;
     }
-    listHead = prev;
-    return listHead;
+    this.head = prev;
+    return this.head;
 }
-
-// function middleNode(listHead){
-//     if(listHead == null){
-//         return
-//     }
-//     let slowPtr = listHead;
-//     let fastPtr = listHead;
-//     while(fastPtr !== null && fastPtr.next !== null){
-//         slowPtr = slowPtr.next;
-//         fastPtr = fastPtr.next.next;
-//     }
-//     console.log(slowPtr.data);
-//     return slowPtr.next;
-// }
+// list.reverse();
+// list.print();
 
 function compareLists(listHeadA, listHeadB){
-    if(listHeadA == null || listHeadB == null){
-        return 0
-    }
     let tempA = listHeadA;
     let tempB = listHeadB;
-    while(tempA !== null && tempB !== null){
+    while(!tempA && !tempB){
         if(tempA.data == tempB.data){
             tempA = tempA.next;
             tempB = tempB.next;
@@ -110,46 +121,5 @@ function compareLists(listHeadA, listHeadB){
 }
 
 function checkPalindrome(listHead){
-    if(listHead == null){
-        return
-    }
-    let prevOfSlowPtr;
-    let slowPtr = listHead;
-    let fastPtr = listHead;
-    let secondHalf;
-    let midNode;
-    let result;
-    while(fastPtr !== null && fastPtr.next !== null){
-        prevOfSlowPtr = slowPtr;
-        slowPtr = slowPtr.next;
-        fastPtr = fastPtr.next.next;
-    }
-
-    // if list is even fastPtr will be null. In case of odd numbers it wont be null
-    if(fastPtr !== null){
-        midNode = slowPtr;
-        slowPtr = slowPtr.next;
-    }
-    prevOfSlowPtr.next = null;
-    secondHalf = slowPtr;
-    // reverse second half list
-    reverse(secondHalf);
-    result = compareLists(listHead, secondHalf);
-
-    // construct the original list back
-    reverse(secondHalf);
-    // If there was a mid node (odd size case) which                                                         
-    // was not part of either first half or second half.
-    if (midNode !== null) {
-        prevOfSlowPtr.next = midNode;
-        midNode.next = secondHalf;
-    } else  {
-        prevOfSlowPtr.next = secondHalf;
-    }
-    console.log(result);
-    return result;
+    // 
 }
-
-checkPalindrome(list.head);
-
-// TODO
