@@ -32,26 +32,44 @@ class LinkedList{
             }
         }
     }
-    middleNode(){
-        if(this.head == null){
-            return
-        }
-        let slowPtr = this.head;
-        let fastPtr = this.head;
-        while(fastPtr !== null && fastPtr.next !== null){
-            slowPtr = slowPtr.next;
-            fastPtr = fastPtr.next.next;
-        }
-        console.log(slowPtr.data);
-        return slowPtr;
-    }
 }
+
 let list = new LinkedList();
 list.insertLast(10);
 list.insertLast(15);
 list.insertLast(12);
 list.insertLast(13);
-list.insertLast(20);
-list.insertLast(20);
-list.print();
-list.middleNode();
+// create a loop
+list.head.next.next.next.next = list.head.next.next;
+
+function detectLoop(listHead){
+    if(listHead == null){
+        return 0;
+    }
+    let slowPtr = listHead;
+    let fastPtr = listHead;
+    while(slowPtr && fastPtr && fastPtr.next){
+        slowPtr = slowPtr.next;
+        fastPtr = fastPtr.next.next;
+        if(slowPtr == fastPtr){
+            console.log("loop found");
+            countLoop(slowPtr, listHead);
+        }
+    }
+    return 0;
+}   
+
+function countLoop(loopNode, listHead){
+    let ptr1 = loopNode;
+    let ptr2 = loopNode;
+    let nodeCount = 1;
+    while(ptr2.next !== ptr1){
+        ptr2 = ptr2.next;
+        nodeCount++;
+    }
+    console.log(nodeCount);
+}
+
+
+
+detectLoop(list.head);

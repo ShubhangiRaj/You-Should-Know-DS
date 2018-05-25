@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/LinkedList/checkPalindrome.js"
+            "program": "${workspaceFolder}/LinkedList/stringsPalindrome.js"
         }
     ]
 }

@@ -32,26 +32,36 @@ class LinkedList{
             }
         }
     }
-    middleNode(){
-        if(this.head == null){
-            return
-        }
-        let slowPtr = this.head;
-        let fastPtr = this.head;
-        while(fastPtr !== null && fastPtr.next !== null){
-            slowPtr = slowPtr.next;
-            fastPtr = fastPtr.next.next;
-        }
-        console.log(slowPtr.data);
-        return slowPtr;
+}
+
+let list = new LinkedList();
+list.insertLast("a");
+list.insertLast("bc");
+list.insertLast("d");
+list.insertLast("dcb");
+list.insertLast("c");
+
+// Given a linked list handling string data, check to see whether data is palindrome or not?
+
+function checkPalindrome(listHead){
+    let str = "";
+    let curr = listHead;
+    while(curr !== null){
+        str += curr.data;
+        curr = curr.next;
+    }
+    return isPalindrome(str);
+}
+
+function isPalindrome(str){
+    let revStr = str.split("").reverse().join("");
+    console.log(str);
+    console.log(revStr);
+    if(str == revStr){
+        return 1;
+    } else {
+        return 0;
     }
 }
-let list = new LinkedList();
-list.insertLast(10);
-list.insertLast(15);
-list.insertLast(12);
-list.insertLast(13);
-list.insertLast(20);
-list.insertLast(20);
-list.print();
-list.middleNode();
+
+checkPalindrome(list.head);

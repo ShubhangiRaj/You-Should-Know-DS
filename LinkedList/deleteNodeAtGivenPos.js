@@ -32,26 +32,32 @@ class LinkedList{
             }
         }
     }
-    middleNode(){
-        if(this.head == null){
-            return
-        }
-        let slowPtr = this.head;
-        let fastPtr = this.head;
-        while(fastPtr !== null && fastPtr.next !== null){
-            slowPtr = slowPtr.next;
-            fastPtr = fastPtr.next.next;
-        }
-        console.log(slowPtr.data);
-        return slowPtr;
-    }
 }
+
 let list = new LinkedList();
 list.insertLast(10);
 list.insertLast(15);
 list.insertLast(12);
 list.insertLast(13);
-list.insertLast(20);
-list.insertLast(20);
-list.print();
-list.middleNode();
+
+function deleteNodeAtGivenPos(listHead, index){
+    if(index == 0){
+        listHead = listHead.next;
+    }
+    let curr = listHead;
+    let prev = null;
+    let count = 0;
+    while(curr !== null && count !== index){
+        prev = curr;
+        curr = curr.next;
+        count++;
+    }
+    // delete last node
+    if(curr.next == null){
+        prev.next = null;
+    } else {
+        prev.next = curr.next;
+    }
+    return listHead;
+}
+deleteNodeAtGivenPos(list.head, 2);
