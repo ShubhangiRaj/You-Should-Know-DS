@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/SchoolProgramming/bdayCandlesHR.js"
+            "program": "${workspaceFolder}/Arrays/Rearrangement/moveZerosToEnd.js"
         }
     ]
 }
