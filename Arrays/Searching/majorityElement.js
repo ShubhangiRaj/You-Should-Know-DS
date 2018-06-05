@@ -7,7 +7,7 @@ function majorityElement(arr){
     var hashMap = {};
 
     for (var i = 0; i < arr.length; i++) {
-        var num = arr[i];
+        // var num = arr[i];
         // counts[num] = counts[num] ? counts[num] + 1 : 1;
         if(hashMap[arr[i]]){
             hashMap[arr[i]] = hashMap[arr[i]] + 1;
