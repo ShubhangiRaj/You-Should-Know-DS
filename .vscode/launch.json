@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/Arrays/Rearrangement/reorderAsPerIndexes.js"
+            "program": "${workspaceFolder}/Arrays/OrderStatistics/atleastTwoGreatest.js"
         }
     ]
 }
