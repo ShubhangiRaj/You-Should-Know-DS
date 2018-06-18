@@ -6,13 +6,18 @@
 //         index[] = [0,  1,  2,  3,   4]
 
 function reorderAsPerIndexes(arr, indexArr){
-    for(let i = 0; i < arr.length - 2; i++){
+    
+    // let tempIndex = indexArr[[indexArr[0]]];
+    // let value = arr[indexArr[0]];
+
+    for(let i = 0; i < arr.length; i++){
         if(indexArr[i] !== i){
             [arr[i], arr[indexArr[i]]] = [arr[indexArr[i]], arr[i]];
+            let temp = indexArr[i]; // 3
+            indexArr[i] = indexArr[temp] // 1
+            indexArr[temp] = temp;
         }
     }
     console.log(arr);
 }
-reorderAsPerIndexes([10, 11, 12], [1,0,2]);
-
-// TODO
+reorderAsPerIndexes([50, 40, 70, 60, 90, 10], [3,  0,  4,  1,  5, 2]);
