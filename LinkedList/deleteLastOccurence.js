@@ -35,34 +35,40 @@ class LinkedList{
 }
 
 let list = new LinkedList();
+list.insertLast(1);
+list.insertLast(2);
+list.insertLast(3);
+list.insertLast(5);
+list.insertLast(2);
 list.insertLast(10);
-list.insertLast(15);
-list.insertLast(12);
-list.insertLast(12);
-list.insertLast(13);
+list.insertLast(2);
+list.insertLast(5);
+list.print();
 
-function deleteLastOccurence(listHead, num){
-    if(!listHead){
-        return 0;
-    }
-    let curr = listHead;
+function deleteLastOccurence(listHead, data){
     let prev = null;
+    let curr = listHead;
     let lastSeen;
-    while(curr !== null){
-        if(curr.data == num){
+
+    while(curr.next !== null){
+        if(curr.data == data){
             lastSeen = curr;
+            prev = curr;
+            curr = curr.next;
+        } else {
+            prev = curr;
+            curr = curr.next;
         }
-        prev = curr;
-        curr = curr.next;
     }
-    if(lastSeen.next !== null){
-        prev.next = lastSeen.next;
-    } else {
+    // the lastOccurence of the data is also the last elem in the list
+    if(curr.data == data){
         prev.next = null;
+    }else {
+        lastSeen.data = lastSeen.next.data;
+        lastSeen.next = lastSeen.next.next;
     }
     return listHead;
 }
 
-deleteLastOccurence(list.head, 12);
- 
-// TODO
+deleteLastOccurence(list.head, 2);
+list.print()
