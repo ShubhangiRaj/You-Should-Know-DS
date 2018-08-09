@@ -75,3 +75,4 @@ function detectLoop(listHead){
 // create a loop
 list.head.next.next.next.next = list.head.next.next;
 detectLoop(list.head); 
+list.print()
