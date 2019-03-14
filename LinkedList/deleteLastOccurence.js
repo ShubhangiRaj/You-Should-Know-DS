@@ -60,7 +60,7 @@ function deleteLastOccurence(listHead, data){
             curr = curr.next;
         }
     }
-    // the lastOccurence of the data is also the last elem in the list
+    // the lastOccurence of the data is also the last element in the list
     if(curr.data == data){
         prev.next = null;
     }else {

@@ -1,14 +1,3 @@
-// function reverseNum(num){
-//     let reverse = 0;
-//     let lastDigit;
-//     while(num > 0){
-//         lastDigit = num % 10;
-//         reverse = (reverse * 10) + lastDigit;
-//         num = num / 10;
-//     }
-//     return reverse;
-// }
-
 function reverseNum(n){
     let arr = n.toString().split("");
     let reverseArr = arr.reverse();

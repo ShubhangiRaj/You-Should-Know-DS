@@ -40,4 +40,8 @@ list.insertLast(12);
 list.insertLast(13);
 list.insertLast(20);
 
-function swapNodesPairwise()
+function swapNodesPairwise(){
+
+}
+
+// TODO

@@ -11,3 +11,5 @@ class LinkedList{
         this.head = null;
     }
 }
+
+// TODO

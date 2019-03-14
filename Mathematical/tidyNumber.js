@@ -1,6 +1,5 @@
 function tidyNumber(num){
     let prev = 10;
-
     while(num){
         let rem = num % 10;
         num = num / 10;
